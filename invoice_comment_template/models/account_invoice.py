@@ -11,9 +11,9 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     comment_template1_id = fields.Many2one('base.comment.template',
-                                           string='Top Comment Template')
+                                           string='Top Comment Template', domain=[('model','=','account.invoice')])
     comment_template2_id = fields.Many2one('base.comment.template',
-                                           string='Bottom Comment Template')
+                                           string='Bottom Comment Template', domain=[('model','=','account.invoice'))
     note1 = fields.Html('Top Comment')
     note2 = fields.Html('Bottom Comment')
 
