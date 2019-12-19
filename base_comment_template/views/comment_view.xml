@@ -20,8 +20,26 @@
           <group>
             <field name="name"/>
             <field name="position"/>
-            <field name="text" colspan="4"/>
+            <field name="model_id" required="1" options="{'no_create': True}" domain="[('name', 'in', ['Partner', 'Invoice', 'Sales Order'])]"/>
+            <field name="model" invisible="0"/>
           </group>
+          <notebook>
+            <page string="Content">
+                <field name="text" colspan="4"/>
+            </page>
+            <page string="Variable Content">
+                <group>
+                    <field name="model_object_field"
+                            domain="[('model_id','=',model_id),('ttype','!=','one2many'),('ttype','!=','many2many')]"/>
+                    <field name="sub_object" readonly="1"/>
+                    <field name="sub_model_object_field"
+                            domain="[('model_id','=',sub_object),('ttype','!=','one2many'),('ttype','!=','many2many')]"
+                            attrs="{'readonly':[('sub_object','=',False)],'required':[('sub_object','!=',False)]}"/>
+                    <field name="null_value"/>
+                    <field name="copyvalue"/>
+                </group>
+            </page>
+        </notebook>
         </form>
       </field>
     </record>
