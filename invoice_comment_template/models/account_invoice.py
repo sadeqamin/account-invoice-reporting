@@ -38,3 +38,12 @@ class AccountInvoice(models.Model):
         elif comment_template.position == 'after_lines':
             self.comment_template2_id = comment_template
         return res
+    
+    @api.multi
+    def render_html(self, template):
+        if template:
+            rendered_note = self.env['mail.template'].render_template(template, 'account.invoice', [self.id])
+            for key, value in rendered_note.items():
+                return(str(value))
+
+
