@@ -4,6 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 
 class BaseCommentTemplate(models.Model):
@@ -94,3 +95,8 @@ class BaseCommentTemplate(models.Model):
             rendered_note = self.env['mail.template'].render_template(self.text, self.model, [self.id])
             for key, value in rendered_note.items():
                 return(str(value))
+           
+class SubscriptionDocument(models.Model):
+    _inherit = ["multi.company.abstract", "base.comment.template"]
+    _name = "base.comment.template"
+    _description = "Base Comments Template (Multi-Company)"
