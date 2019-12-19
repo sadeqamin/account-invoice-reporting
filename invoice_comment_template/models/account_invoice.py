@@ -32,10 +32,11 @@ class AccountInvoice(models.Model):
     @api.onchange('partner_id', 'company_id')
     def _onchange_partner_id(self):
         res = super(AccountInvoice, self)._onchange_partner_id()
+        comment_template_model = self.partner_id.comment_template_id.model
         comment_template = self.partner_id.comment_template_id
-        if comment_template.position == 'before_lines':
+        if comment_template.position == 'before_lines' and comment_template_model == 'account.invoice':
             self.comment_template1_id = comment_template
-        elif comment_template.position == 'after_lines':
+        elif comment_template.position == 'after_lines' and comment_template_model == 'account.invoice':
             self.comment_template2_id = comment_template
         return res
     
