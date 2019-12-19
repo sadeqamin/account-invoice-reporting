@@ -12,7 +12,7 @@
             <group string="Top Comments">
               <field name="comment_template1_id"
                 string="Load a template"
-                domain="[('position','=','before_lines'), ('model', '=', 'account.invoice')]"
+                domain="[('position','=','before_lines'), ('model_id.model', '=', 'account.invoice')]"
                 context="{'default_position': 'before_lines'}"/>
               <field name="note1" nolabel="1" colspan="2"/>
             </group>
