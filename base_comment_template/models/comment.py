@@ -96,7 +96,7 @@ class BaseCommentTemplate(models.Model):
             for key, value in rendered_note.items():
                 return(str(value))
            
-class SubscriptionDocument(models.Model):
+class BaseCommentTemplate(models.Model):
     _inherit = ["multi.company.abstract", "base.comment.template"]
     _name = "base.comment.template"
     _description = "Base Comments Template (Multi-Company)"
