@@ -20,7 +20,7 @@
           <group>
             <field name="name"/>
             <field name="position"/>
-            <field name="model_id" required="1" options="{'no_create': True}" domain="[('name', 'in', ['Invoice', 'Sales Order'])]"/>
+            <field name="model_id" required="1" options="{'no_create': True}" domain="[('name', 'in', ['Invoice', 'Sales Order', 'Purchase Order'])]"/>
             <field name="model" invisible="1"/>
           </group>
           <notebook>
